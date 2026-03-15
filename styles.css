@@ -1,0 +1,91 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.app {
+  width: min(92vw, 520px);
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.hud p {
+  margin: 0;
+}
+
+#status {
+  flex-basis: 100%;
+  color: #444;
+}
+
+.board {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  border: 1px solid #ccc;
+  background: #fafafa;
+}
+
+.cell {
+  border: 1px solid #f0f0f0;
+}
+
+.cell.snake {
+  background: #2f8f2f;
+}
+
+.cell.head {
+  background: #1f6f1f;
+}
+
+.cell.food {
+  background: #c93030;
+}
+
+.controls {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.controls button {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border: 1px solid #bbb;
+  background: #fdfdfd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #f0f0f0;
+}

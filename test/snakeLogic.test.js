@@ -52,6 +52,33 @@ test('collision with wall ends game', () => {
   assert.equal(moved.isGameOver, true);
 });
 
+
+test('moving into tail cell is allowed when snake does not grow', () => {
+  const state = {
+    ...createInitialState(5),
+    snake: [
+      { x: 2, y: 2 },
+      { x: 2, y: 1 },
+      { x: 1, y: 1 },
+      { x: 1, y: 2 },
+    ],
+    direction: 'left',
+    pendingDirection: 'left',
+    food: { x: 4, y: 4 },
+    isPaused: false,
+  };
+
+  const moved = tick(state);
+
+  assert.equal(moved.isGameOver, false);
+  assert.deepEqual(moved.snake, [
+    { x: 1, y: 2 },
+    { x: 2, y: 2 },
+    { x: 2, y: 1 },
+    { x: 1, y: 1 },
+  ]);
+});
+
 test('food placement skips occupied cells', () => {
   const snake = [
     { x: 0, y: 0 },

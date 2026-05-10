@@ -60,11 +60,12 @@ export function tick(state, randomFn = Math.random) {
   const direction = state.pendingDirection ?? state.direction;
   const nextHead = moveHead(state.snake[0], direction);
 
-  if (isWallCollision(nextHead, state.gridSize) || isSelfCollision(nextHead, state.snake)) {
+  const willGrow = positionsEqual(nextHead, state.food);
+  const collisionBody = willGrow ? state.snake : state.snake.slice(0, -1);
+
+  if (isWallCollision(nextHead, state.gridSize) || isSelfCollision(nextHead, collisionBody)) {
     return { ...state, direction, isGameOver: true };
   }
-
-  const willGrow = positionsEqual(nextHead, state.food);
   const nextSnake = [nextHead, ...state.snake];
   if (!willGrow) {
     nextSnake.pop();
